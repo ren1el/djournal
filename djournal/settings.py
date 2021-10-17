@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djournal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['djournal/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
