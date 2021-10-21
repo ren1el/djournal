@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     re_path(r'^$', views.article_list),
+    re_path(r'^(?P<slug>[\w-]+)/$', views.article_detail),
 ]
