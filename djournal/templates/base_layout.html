@@ -14,12 +14,27 @@
   <div class="wrapper">
     <h1><a href="{% url 'articles:list' %}"><img src="{% static 'xiaoting2.jpg' %}" /></a></h1>
     <nav>
-      <li>
-        <form action="{% url 'accounts:logout' %}" method="POST">
-          {% csrf_token %}
-          <button type="submit">Logout</button>
-        </form>
-      </li>
+      <ul>
+        {% if user.is_authenticated %}
+          <li>Logged In As: {{ request.user.username }}</li>
+          <li>
+            <a href="{% url 'articles:create' %}">New Article</a>
+          </li>
+          <li>
+            <form action="{% url 'accounts:logout' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          <li>
+            <a href="{% url 'accounts:signup' %}">Signup</a>
+          </li>
+        {% endif %}
+      </ul>
     </nav>
     {% block content %}
     {% endblock%}
